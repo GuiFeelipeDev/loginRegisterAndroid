@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">appIdVitimas</string>
+    <string name="tf_loginMail">Email</string>
+    <string name="tf_loginPass">Senha</string>
+    <string name="btn_cadastrar">Cadastrar</string>
+    <string name="btn_entrar">Entrar</string>
+</resources>

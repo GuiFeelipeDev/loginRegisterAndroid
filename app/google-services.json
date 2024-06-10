@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "170185817645",
+    "project_id": "atividadeidvictim",
+    "storage_bucket": "atividadeidvictim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170185817645:android:30a1faab8ef1e1e8fb02a4",
+        "android_client_info": {
+          "package_name": "com.example.atividadesqlite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxoCmbyuyp7NPOVmucjlYvljpm5XVFwtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
