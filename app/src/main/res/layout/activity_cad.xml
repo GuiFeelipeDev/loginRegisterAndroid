@@ -87,7 +87,7 @@
             android:background="@drawable/custom_input"
             android:ems="10"
             android:hint="@string/tf_loginPass"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingHorizontal="6dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"

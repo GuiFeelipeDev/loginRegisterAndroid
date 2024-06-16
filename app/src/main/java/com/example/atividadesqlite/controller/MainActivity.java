@@ -1,4 +1,4 @@
-package com.example.atividadesqlite;
+package com.example.atividadesqlite.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.atividadesqlite.R;
 import com.example.atividadesqlite.View.CadActivity;
+import com.example.atividadesqlite.View.ViewValuesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -39,28 +41,25 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
 
-
+        //Botão de login
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Coleta dos dados dos campos
                 String loginMail = name.getText().toString();
                 String loginPass = pass.getText().toString();
-
+                //Tenta logar
                try{
                    mAuth.signInWithEmailAndPassword(loginMail, loginPass)
                            .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                                @Override
                                public void onComplete(@NonNull Task<AuthResult> task) {
                                    if (task.isSuccessful()) {
-                                       // Sign in success, update UI with the signed-in user's information
                                        Log.d("Login", "signInWithEmail:success");
-                                       FirebaseUser user = mAuth.getCurrentUser();
                                        Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
                                        startActivity(nav);
                                    } else {
-                                       // If sign in fails, display a message to the user.
-                                       Log.d("Login", "signInWithEmail:failure", task.getException());
+                                       // Se falhar da um toas avisando.
                                        Toast.makeText(MainActivity.this, "Usuário ou senha incorretos.",
                                                Toast.LENGTH_SHORT).show();
                                    }
@@ -86,10 +85,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // Verifica se o usuário ja logou e o redireciona.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
-
         if(currentUser != null){
             Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
             startActivity(nav);

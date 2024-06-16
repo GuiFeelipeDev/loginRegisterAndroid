@@ -52,9 +52,9 @@ public class CadActivity extends AppCompatActivity {
 
 
         mAuth = FirebaseAuth.getInstance();
-
+        //Referencia da database
         databaseReference = FirebaseDatabase.getInstance().getReference("userData");
-
+        //Listener para a adição de um novo valor a fim de pegar o index dos usuários
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -66,7 +66,7 @@ public class CadActivity extends AppCompatActivity {
                 Toast.makeText(CadActivity.this, "Algo deu errado!", Toast.LENGTH_LONG).show();
             }
         });
-
+        //Botão de registrar
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +75,7 @@ public class CadActivity extends AppCompatActivity {
                 String cpf = cad_cpf.getText().toString();
                 String email = cad_email.getText().toString();
                 String password = cad_password.getText().toString();
-
+                    //Verifica se os campos não estão vazios
                 if (email.isEmpty() || password.isEmpty() || name.isEmpty() || phone.isEmpty() || cpf.isEmpty()) {
                     Toast.makeText(CadActivity.this, "Preencha todos os campos!", Toast.LENGTH_LONG).show();
                 } else {
@@ -92,25 +92,24 @@ public class CadActivity extends AppCompatActivity {
                 String password = cad_password.getText().toString();
 
 
-
+                //Tenta adicionar com a função do firebase
               try {
                   mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                       @Override
                       public void onComplete(@NonNull Task<AuthResult> task) {
                           if (task.isSuccessful()) {
+                              //Se obtiver sucesso na task, salva o resto dos dados em uma tabela chamada userData
                               Toast.makeText(CadActivity.this, "CADASTRADO COM SUCESSO!!!", Toast.LENGTH_LONG).show();
                               String uid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
                               final int index = userIndex + 1;
-
+                              // Salva tudo e fecha a intent
                               UserData userData = new UserData("user"+index, name, phone, cpf, uid);
-
                               databaseReference.child("user"+index).setValue(userData);
-
                               finish();
                           }
 
                           if(task.isCanceled()){
-                              Toast.makeText(CadActivity.this, "BANIDO!", Toast.LENGTH_LONG).show();
+                              Toast.makeText(CadActivity.this, "Ocorreu um erro, tente novamente!", Toast.LENGTH_LONG).show();
                           }
                       }
                   });
@@ -120,6 +119,7 @@ public class CadActivity extends AppCompatActivity {
 
             }
         });
+        //Botão de retornar
         rollback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,6 @@
-package com.example.atividadesqlite;
+package com.example.atividadesqlite.View;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
 import com.example.atividadesqlite.Model.ListData;
+import com.example.atividadesqlite.R;
+import com.example.atividadesqlite.controller.ListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,8 +30,7 @@ public class ViewValuesActivity extends AppCompatActivity {
     ListView listViewPerson;
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
-    SearchView searchView;
-    Button rollback;
+    Button rollback, nameSearch;
     DatabaseReference databaseReference;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +38,14 @@ public class ViewValuesActivity extends AppCompatActivity {
         setContentView(R.layout.view_values);
 
 
-        //Criação da DB
-        DBHelper db = new DBHelper(this);
         //Botão de voltar
         rollback = findViewById(R.id.rollback_button);
-
+        nameSearch = findViewById(R.id.filter_button);
         databaseReference = FirebaseDatabase.getInstance().getReference("victim");
 
         //Atribuição da listview
         listViewPerson = findViewById(R.id.listViewPerson);
-        searchView = findViewById(R.id.search_person);
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,7 +59,8 @@ public class ViewValuesActivity extends AppCompatActivity {
                     String identification_status = sampleSnapshot.child("identification_status").getValue().toString();
                     String rescue_date = sampleSnapshot.child("rescue_date").getValue().toString();
                     String id = sampleSnapshot.child("id").getValue().toString();
-                    ListData item = new ListData(name, doc, condition, disaster_id, feature, id, identification_status, rescue_date);
+                    String doc_img = sampleSnapshot.child("doc_img").getValue().toString();
+                    ListData item = new ListData(name, doc, condition, disaster_id, feature, id, identification_status, rescue_date, doc_img);
                     dataArrayList.add(item);
                 }
                 //Criação e consumo do adapter
@@ -88,18 +89,14 @@ public class ViewValuesActivity extends AppCompatActivity {
             }
         });
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                ViewValuesActivity.this.listAdapter.getFilter().filter(query);
 
-                return false;
-            }
 
+        nameSearch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onQueryTextChange(String newText) {
-                ViewValuesActivity.this.listAdapter.getFilter().filter(newText);
-                return false;
+            public void onClick(View v) {
+                Intent nav = new Intent(getApplicationContext(), PersonInfoActivity.class);
+                startActivity(nav);
+
             }
         });
 

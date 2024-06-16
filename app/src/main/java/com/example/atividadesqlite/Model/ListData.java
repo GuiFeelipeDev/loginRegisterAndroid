@@ -10,8 +10,9 @@ public class ListData {
     public  String id;
     public String identification_status;
     public String rescue_date;
+    public String doc_img;
 
-    public ListData(String name, String doc, String condition, String disaster_id, String feature, String id, String identification_status, String rescue_date) {
+    public ListData(String name, String doc, String condition, String disaster_id, String feature, String id, String identification_status, String rescue_date, String doc_img) {
         this.name = name;
         this.doc = doc;
         this.condition = condition;
@@ -20,5 +21,6 @@ public class ListData {
         this.id = id;
         this.identification_status = identification_status;
         this.rescue_date = rescue_date;
+        this.doc_img = doc_img;
     }
 }
