@@ -7,12 +7,12 @@ public class UserData {
     private String phone;
     private String userRef;
 
-    public UserData(String id, String name, String cpf, String phone, String userRef) {
+    public UserData(String id, String name, String cpf, String phone) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.phone = phone;
-        this.userRef = userRef;
+
     }
 
     public String getId() {
@@ -47,11 +47,4 @@ public class UserData {
         this.phone = phone;
     }
 
-    public String getUserRef() {
-        return userRef;
-    }
-
-    public void setUserRef(String userRef) {
-        this.userRef = userRef;
-    }
 }

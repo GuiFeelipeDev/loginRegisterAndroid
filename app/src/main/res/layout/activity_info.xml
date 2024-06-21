@@ -5,86 +5,78 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".View.ViewValuesActivity"
-    android:layout_gravity="center"
-    >
-
+    tools:context=".controller.MainActivity">
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="587dp"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:background="@color/white"
-        android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.397">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458">
 
 
-        <Button
-            android:id="@+id/filter_button"
-            android:layout_width="wrap_content"
-            android:paddingHorizontal="10dp"
-            android:layout_height="45dp"
-            android:background="@drawable/custom_button_purple"
-            android:text="Busca por documento"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <ListView
-            android:id="@+id/listViewPerson"
-            android:layout_width="match_parent"
-            android:layout_height="458dp"
-            android:layout_marginTop="12dp"
-            android:background="@color/white"
-            android:divider="@android:color/transparent"
-            android:dividerHeight="10.0sp"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/list_item" />
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:text="Caso não enconte a pessoa, por favor entre em contato no botão abaixo!"
+            android:textSize="24sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <Button
-                android:id="@+id/rollback_button"
+                android:id="@+id/rollbackInfo"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button"
-                android:text="Sair"
+                android:text="Voltar"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
-
             <Button
-                android:id="@+id/cadVictimBtn"
+                android:id="@+id/ContactInfo"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button_purple"
-                android:text="Cadastrar"
+                android:text="Contato"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
+
         </LinearLayout>
+
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="181dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="244dp"
+        android:layout_height="126dp"
+        android:layout_marginTop="64dp"
         android:background="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.692"
         app:srcCompat="@mipmap/logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

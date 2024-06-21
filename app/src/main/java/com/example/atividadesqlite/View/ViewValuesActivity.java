@@ -4,14 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 
 import com.example.atividadesqlite.Model.ListData;
 import com.example.atividadesqlite.R;
@@ -30,7 +28,7 @@ public class ViewValuesActivity extends AppCompatActivity {
     ListView listViewPerson;
     ListAdapter listAdapter;
     ArrayList<ListData> dataArrayList = new ArrayList<>();
-    Button rollback, nameSearch;
+    Button rollback, nameSearch, cadVictim;
     DatabaseReference databaseReference;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +40,7 @@ public class ViewValuesActivity extends AppCompatActivity {
         rollback = findViewById(R.id.rollback_button);
         nameSearch = findViewById(R.id.filter_button);
         databaseReference = FirebaseDatabase.getInstance().getReference("victim");
-
+        cadVictim = findViewById(R.id.cadVictimBtn);
         //Atribuição da listview
         listViewPerson = findViewById(R.id.listViewPerson);
 
@@ -50,23 +48,31 @@ public class ViewValuesActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dataArrayList.clear();
+
                 for (DataSnapshot sampleSnapshot: dataSnapshot.getChildren()) {
                     String name = sampleSnapshot.child("name").getValue().toString();
                     String doc = sampleSnapshot.child("doc").getValue().toString();
                     String feature = sampleSnapshot.child("feature").getValue().toString();
                     String condition = sampleSnapshot.child("condition").getValue().toString();
-                    String disaster_id = sampleSnapshot.child("disaster_id").getValue().toString();
+                    String disaster_id = sampleSnapshot.child("disasterId").getValue().toString();
                     String identification_status = sampleSnapshot.child("identification_status").getValue().toString();
-                    String rescue_date = sampleSnapshot.child("rescue_date").getValue().toString();
+                    String rescue_date = sampleSnapshot.child("rescueDate").getValue().toString();
                     String id = sampleSnapshot.child("id").getValue().toString();
                     String doc_img = sampleSnapshot.child("doc_img").getValue().toString();
-                    ListData item = new ListData(name, doc, condition, disaster_id, feature, id, identification_status, rescue_date, doc_img);
-                    dataArrayList.add(item);
+                    String identifiedBy = "";
+                    if(identification_status.equals("Identificado")){
+                         identifiedBy = sampleSnapshot.child("identifiedBy").getValue().toString();
+                    }
+                    ListData item = new ListData(name, doc, condition, disaster_id, feature, id, identification_status, rescue_date, doc_img, identifiedBy);
+
+                        dataArrayList.add(item);
+
                 }
+
                 //Criação e consumo do adapter
                 listAdapter = new ListAdapter(ViewValuesActivity.this, dataArrayList);
                 listViewPerson.setAdapter(listAdapter);
-                Log.d("firebase", dataArrayList.toString());
 
             }
 
@@ -80,15 +86,13 @@ public class ViewValuesActivity extends AppCompatActivity {
 
 
 
-        listViewPerson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        cadVictim.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Intent nav = new Intent(getApplicationContext(), PersonInfoActivity.class);
-//                startActivity(nav);
-                Toast.makeText(ViewValuesActivity.this, "BANIDO!", Toast.LENGTH_LONG).show();
+            public void onClick(View v) {
+                Intent nav = new Intent(getApplicationContext(), CadVictim.class);
+                startActivity(nav);
             }
         });
-
 
 
         nameSearch.setOnClickListener(new View.OnClickListener() {

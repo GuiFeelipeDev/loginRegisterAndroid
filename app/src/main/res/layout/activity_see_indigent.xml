@@ -11,40 +11,64 @@
 
 
     <LinearLayout
-        android:layout_width="400dp"
-        android:layout_height="587dp"
+        android:layout_width="399dp"
+        android:layout_height="670dp"
+        android:layout_marginBottom="28dp"
         android:background="@color/white"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:layout_constraintVertical_bias="0.397">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Filtrar por desastre:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/seeIndigentSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            />
+
         <Button
-            android:id="@+id/filter_button"
-            android:layout_width="wrap_content"
-            android:paddingHorizontal="10dp"
+            android:id="@+id/seeIndigentFilter"
+            android:layout_width="130dp"
             android:layout_height="45dp"
-            android:background="@drawable/custom_button_purple"
-            android:text="Busca por documento"
-            android:textColor="@color/white"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/custom_button"
+            android:text="Buscar"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Lista de Indigentes:"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
         <ListView
-            android:id="@+id/listViewPerson"
+            android:id="@+id/listViewIndigent"
             android:layout_width="match_parent"
-            android:layout_height="458dp"
+            android:layout_height="406dp"
             android:layout_marginTop="12dp"
             android:background="@color/white"
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"
             android:scrollbars="vertical"
-            tools:listitem="@layout/list_item" />
+            tools:listitem="@layout/list_indigent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -52,39 +76,30 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/rollback_button"
+                android:id="@+id/seeIndigentRollback"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button"
-                android:text="Sair"
+                android:text="Voltar"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/cadVictimBtn"
+                android:id="@+id/infoButton"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button_purple"
-                android:text="Cadastrar"
+                android:text="Info"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="181dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

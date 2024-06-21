@@ -31,8 +31,11 @@
         <androidx.appcompat.widget.SearchView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Insira o nome:"
+            android:hint="Número do documento:"
+            app:queryHint="Insira o documento"
+            app:iconifiedByDefault="false"
             android:id="@+id/find_by_name"
+            android:text="Número do documento"
             android:layout_marginBottom="10dp"/>
 
     <LinearLayout
@@ -170,14 +173,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/identify_person"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="10dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_button_purple"
+                android:text="Eu identifico essa pessoa"
+                android:textColor="@color/white"
+                android:visibility="invisible"
+                android:textSize="14sp" />
 
             <Button
                 android:id="@+id/rollback_person"
                 android:layout_width="130dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button"
                 android:text="Voltar"
@@ -185,15 +200,16 @@
                 android:textSize="14sp" />
 
             <Button
-                android:id="@+id/seecads_button"
-                android:layout_width="130dp"
+                android:id="@+id/seeIndigentButton"
+                android:layout_width="wrap_content"
+                android:paddingHorizontal="10dp"
                 android:layout_height="45dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
                 android:background="@drawable/custom_button_purple"
-                android:text="contato"
+                android:text="Lista de Indigentes"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
+
+
         </LinearLayout>
 
 

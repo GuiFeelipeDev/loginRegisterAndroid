@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="equipes" >
-        <item>Enchente - Cidadezinha</item>
-        <item>Queda de Avião - Algum Lugar</item>
+    <string-array name="gender" >
+        <item>Masculino</item>
+        <item>Feminino</item>
     </string-array>
 </resources>

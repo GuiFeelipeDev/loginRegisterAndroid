@@ -10,7 +10,7 @@
     android:layout_marginVertical="10dp"
     android:layout_marginHorizontal="20dp"
     app:cardCornerRadius="5dp"
-    tools:context=".View.ViewValuesActivity">
+    tools:context=".View.SeeIndigentActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,12 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:srcCompat="@mipmap/ex_img"
-                android:id="@+id/listImage"
-                />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,50 +34,52 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/victim_name"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text="Fulana de Tal"
+                    android:text="Sexo: "
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/victim_doc"
-                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text="Doc: 123456-9"
-
+                    android:id="@+id/seeIndigentGender"
+                    android:text="Masculino"
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/victim_feature"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="Descrição:"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seeIndigentFeatures"
                     android:textSize="14sp"
                     android:textColor="@color/black"
                     android:text="Tatuagem de flor na perna esquerda"
-
                     />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/disaster"
+                    android:textStyle="bold"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:text=""
-
+                    android:text="Data de encontro: "
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seeIndigentDate"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:text="12/12/2012"
                     />
             </LinearLayout>
-
         </LinearLayout>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="Contactar identificador"
-            android:visibility="invisible"
-            android:id="@+id/contactId"
-
-            />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

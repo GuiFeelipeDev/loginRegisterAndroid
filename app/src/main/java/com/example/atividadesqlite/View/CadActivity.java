@@ -55,17 +55,6 @@ public class CadActivity extends AppCompatActivity {
         //Referencia da database
         databaseReference = FirebaseDatabase.getInstance().getReference("userData");
         //Listener para a adição de um novo valor a fim de pegar o index dos usuários
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userIndex = (int) snapshot.getChildrenCount();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(CadActivity.this, "Algo deu errado!", Toast.LENGTH_LONG).show();
-            }
-        });
         //Botão de registrar
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +90,9 @@ public class CadActivity extends AppCompatActivity {
                               //Se obtiver sucesso na task, salva o resto dos dados em uma tabela chamada userData
                               Toast.makeText(CadActivity.this, "CADASTRADO COM SUCESSO!!!", Toast.LENGTH_LONG).show();
                               String uid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
-                              final int index = userIndex + 1;
                               // Salva tudo e fecha a intent
-                              UserData userData = new UserData("user"+index, name, phone, cpf, uid);
-                              databaseReference.child("user"+index).setValue(userData);
+                              UserData userData = new UserData(uid, name, phone, cpf);
+                              databaseReference.child(uid).setValue(userData);
                               finish();
                           }
 

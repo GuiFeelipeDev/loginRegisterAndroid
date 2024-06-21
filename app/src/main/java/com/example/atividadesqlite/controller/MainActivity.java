@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.atividadesqlite.R;
 import com.example.atividadesqlite.View.CadActivity;
+import com.example.atividadesqlite.View.PersonInfoActivity;
 import com.example.atividadesqlite.View.ViewValuesActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,9 +56,17 @@ public class MainActivity extends AppCompatActivity {
                                @Override
                                public void onComplete(@NonNull Task<AuthResult> task) {
                                    if (task.isSuccessful()) {
-                                       Log.d("Login", "signInWithEmail:success");
-                                       Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
-                                       startActivity(nav);
+                                       FirebaseUser currentUser = mAuth.getCurrentUser();
+                                       if(currentUser != null){
+                                           if(currentUser.getUid().equals("yz73JcIYUaVQOqMsfU18Nc3ue062")){
+                                               Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
+                                               startActivity(nav);
+                                           }else{
+                                               Intent nav = new Intent(MainActivity.this, PersonInfoActivity.class);
+                                               startActivity(nav);
+                                           }
+
+                                       }
                                    } else {
                                        // Se falhar da um toas avisando.
                                        Toast.makeText(MainActivity.this, "Usuário ou senha incorretos.",
@@ -88,8 +97,14 @@ public class MainActivity extends AppCompatActivity {
         // Verifica se o usuário ja logou e o redireciona.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
-            startActivity(nav);
+            if(currentUser.getUid().equals("yz73JcIYUaVQOqMsfU18Nc3ue062")){
+                Intent nav = new Intent(MainActivity.this, ViewValuesActivity.class);
+                startActivity(nav);
+            }else{
+                Intent nav = new Intent(MainActivity.this, PersonInfoActivity.class);
+                startActivity(nav);
+            }
+
         }
 
 
